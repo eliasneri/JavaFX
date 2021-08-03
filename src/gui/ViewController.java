@@ -1,16 +1,20 @@
 package gui;
 
+import java.net.URL;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 import gui.util.Alerts;
+import gui.util.Constraints;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class ViewController {
+public class ViewController implements Initializable{
 	
 	@FXML
 	private Button btTest, btTest2, btSoma;
@@ -55,6 +59,15 @@ public class ViewController {
 		catch(NumberFormatException e) {
 			Alerts.showAlert("ERROR!", null, e.getMessage(), AlertType.ERROR);
 		}
+		
+	}
+
+	@Override
+	public void initialize(URL url, ResourceBundle rb) {
+		Constraints.setTextFieldDouble(txtNumero1);
+		Constraints.setTextFieldDouble(txtNumero2);
+		Constraints.setTextFieldMaxLength(txtNumero1, 5);
+		Constraints.setTextFieldMaxLength(txtNumero2, 5);
 		
 	}
 
